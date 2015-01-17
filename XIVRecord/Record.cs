@@ -12,7 +12,7 @@ namespace XIVRecord
     public class Record
     {
         // Desktop 01.16.2015 - 21.35.39.06.mp4
-        static readonly Regex FILENAME_PATTERN = new Regex(@"\w+ (\n{2}\.\n{2}\.\n{4} - \n{2}\.\n{2}\.\n{2}\.\n{2})\.mp4", RegexOptions.Compiled);
+        static readonly Regex FILENAME_PATTERN = new Regex(@"\w+ (\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{2}\.\d{2})(?:\.DVR)?\.mp4", RegexOptions.Compiled);
         const string TIMESTAMP_PATTERN = "MM.dd.yyyy - HH.mm.ss.ff";
         public List<FileInfo> Files { get; private set; }
         public FileInfo HeadFile { get { return this.Files.First(); } }
@@ -25,7 +25,10 @@ namespace XIVRecord
             var match = FILENAME_PATTERN.Match(headFile.Name);
             if (!match.Success)
                 throw new ArgumentException("Invalid record:" + headFile);
-            this.Timestamp = DateTime.ParseExact(match.Captures[1].Value, "", DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None);
+            this.Timestamp = DateTime.ParseExact(match.Groups[1].Value, 
+                TIMESTAMP_PATTERN,
+                DateTimeFormatInfo.InvariantInfo,
+                DateTimeStyles.None);
             this.Files = this.GatherRecordFiles(headFile);
         }
 
