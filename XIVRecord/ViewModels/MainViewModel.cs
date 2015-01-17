@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,17 @@ namespace XIVRecord.ViewModels
 
         public MainViewModel()
         {
+            Task.Run((Action)this.Init)
+                .ContinueWith(task =>
+                {
+                    this.RaisePropertyChanged();
+                });
+        }
+
+        private void Init()
+        {
             _model = new Main();
+            this.ArchiveDir = new ArchiveDirViewModel(_model.Archive);
         }
     }
 }
