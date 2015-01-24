@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XIVRecord.Video;
 
 namespace XIVRecord
 {
@@ -13,8 +14,8 @@ namespace XIVRecord
         {
             get
             {
-                return this.Archive != null 
-                    ? this.Archive.Dir.FullName 
+                return this.Archive != null
+                    ? this.Archive.Dir.FullName
                     : null;
             }
             set
@@ -26,6 +27,11 @@ namespace XIVRecord
         public Main()
         {
             this.Archive = ArchiveDir.TryReadFromRegistry();
+            var logfiles = ActLog.Act.Default.FFXIVLogDir.Find(DateRange.Create(DateTime.Now, TimeSpan.FromDays(-1)));
+            foreach (var log in logfiles)
+            {
+                Console.WriteLine(log.File.FullName);
+            }
         }
     }
 }

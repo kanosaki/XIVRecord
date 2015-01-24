@@ -68,9 +68,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActLog\Act.cs" />
+    <Compile Include="ActLog\LogDir.cs" />
+    <Compile Include="ActLog\LogFile.cs" />
+    <Compile Include="DateRange.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="Record.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Video\VideoRecord.cs" />
     <Compile Include="ViewModels\ArchiveDirViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\ArchiveDirView.xaml.cs">
@@ -88,7 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ArchiveDir.cs" />
+    <Compile Include="Video\ArchiveDir.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

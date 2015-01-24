@@ -15,7 +15,10 @@ namespace XIVRecord.ViewModels
 
         public MainViewModel()
         {
-            _model = new Main();
-        }
+            Task.Run(() =>
+            {
+                _model = new Main(); 
+            });
+       }
     }
 }

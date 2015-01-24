@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 
-namespace XIVRecord
+namespace XIVRecord.Video
 {
     public class ArchiveDir
     {
@@ -27,11 +27,11 @@ namespace XIVRecord
             this.Dir = dir;
         }
 
-        public IEnumerable<Record> EnumerateRecords()
+        public IEnumerable<VideoRecord> EnumerateRecords()
         {
             return this.Dir.EnumerateFiles("*.mp4")
                 .Where(fi => !FOLLOWING_FILE_PATTERN.IsMatch(fi.Name))
-                .Select(fi => new Record(fi));
+                .Select(fi => new VideoRecord(fi));
         }
 
         /// <summary>
