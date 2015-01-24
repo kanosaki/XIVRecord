@@ -26,5 +26,10 @@ namespace XIVRecord
             InitializeComponent();
             this.DataContext = new ViewModels.MainViewModel();
         }
+
+        private void ModernWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.LinkNavigator.Navigate(new Uri("/Views/MainView.xaml", UriKind.Relative), this);
+        }
     }
 }
