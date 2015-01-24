@@ -15,5 +15,9 @@ namespace XIVRecord.ViewModels
         {
             _model = model;
         }
+
+        public DateTime Timestamp { get { return _model.Timestamp; } }
+
+        public string Caption { get { return _model.HeadFile.Name; } }
     }
 }

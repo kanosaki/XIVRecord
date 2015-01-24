@@ -3,9 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:XIVRecord.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <ItemsControl
+            VirtualizingStackPanel.IsVirtualizing="True"
+            ScrollViewer.CanContentScroll="True"
+            ItemsSource="{Binding Records}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <v:RecordView />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <Border
+                    BorderThickness="{TemplateBinding Border.BorderThickness}"
+                    Padding="{TemplateBinding Control.Padding}"
+                    BorderBrush="{TemplateBinding Border.BorderBrush}"
+                    Background="{TemplateBinding Panel.Background}"
+                    SnapsToDevicePixels="True">
+                        <ScrollViewer
+                            Padding="{TemplateBinding Control.Padding}"
+                            Focusable="False">
+                            <ItemsPresenter
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
     </Grid>
 </UserControl>
