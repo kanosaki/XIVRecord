@@ -84,20 +84,27 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActLog\Act.cs" />
+    <Compile Include="ActLog\BattleLog.cs" />
     <Compile Include="ActLog\LogDir.cs" />
     <Compile Include="ActLog\LogFile.cs" />
+    <Compile Include="BattleRecord.cs" />
     <Compile Include="DateRange.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Video\BattleVideo.cs" />
     <Compile Include="Video\VideoRecord.cs" />
     <Compile Include="ViewModels\ArchiveDirViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PlayRecordViewModel.cs" />
     <Compile Include="Views\ArchiveDirView.xaml.cs">
       <DependentUpon>ArchiveDirView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayRecordView.xaml.cs">
+      <DependentUpon>PlayRecordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RecordView.xaml.cs">
       <DependentUpon>RecordView.xaml</DependentUpon>
@@ -121,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayRecordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

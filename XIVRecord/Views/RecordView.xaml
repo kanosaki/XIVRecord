@@ -3,7 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" Height="110" Width="443">
+	<UserControl.Resources>
+		<Storyboard x:Key="OnMouseLeftButtonDown1"/>
+	</UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding PlayCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
     	<Grid.ColumnDefinitions>
     		<ColumnDefinition Width="135*"/>
@@ -12,6 +21,5 @@
     	<MediaElement HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="135"/>
     	<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Caption}" VerticalAlignment="Top"/>
     	<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="9,40,0,0" TextWrapping="Wrap" Text="{Binding Timestamp}" VerticalAlignment="Top"/>
-            
     </Grid>
 </UserControl>
