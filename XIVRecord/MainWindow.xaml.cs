@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GalaSoft.MvvmLight.Messaging;
+using XIVRecord.ViewModels;
 
 namespace XIVRecord
 {
@@ -24,10 +25,12 @@ namespace XIVRecord
     /// </summary>
     public partial class MainWindow : ModernWindow
     {
+        MainWindowViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.MainViewModel();
+            _viewModel = new ViewModels.MainWindowViewModel();
+            this.DataContext = _viewModel;
             Messenger.Default.Register(this, (Action<NavigatePageMassage>)this.NavigatePage);
         }
 
@@ -39,7 +42,15 @@ namespace XIVRecord
         {
             try
             {
-                this.ContentSource = msg.Uri;
+                Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    this.LinkNavigator.Navigate(msg.Uri, frame);
+                    if (msg.DataContext != null)
+                    {
+                        _viewModel.ContentContext = msg.DataContext;
+                    }
+                    //this.ContentSource = msg.Uri;
+                }));
             }
             catch (Exception ex)
             {

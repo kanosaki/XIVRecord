@@ -21,20 +21,23 @@ namespace XIVRecord
         public Uri Uri { get; private set; }
         public FrameworkElement Source { get; private set; }
         public string Param { get; private set; }
+        public object DataContext { get; private set; }
 
-        public NavigatePageMassage(Uri uri, FrameworkElement source = null, string param = null)
+        public NavigatePageMassage(Uri uri, object context, FrameworkElement source = null, string param = null)
         {
             this.Uri = uri;
             this.Source = source;
             this.Param = param;
+            this.DataContext = context;
         }
 
         public static NavigatePageMassage Create(
             string relativeUri,
+            object context = null,
             FrameworkElement source = null,
             string param = null)
         {
-            return new NavigatePageMassage(new Uri(relativeUri, UriKind.RelativeOrAbsolute), source, param);
+            return new NavigatePageMassage(new Uri(relativeUri, UriKind.RelativeOrAbsolute), context, source, param);
         }
     }
 }

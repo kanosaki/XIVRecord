@@ -10,7 +10,7 @@ using XIVRecord.Video;
 
 namespace XIVRecord.ViewModels
 {
-    public class RecordViewModel : ViewModelBase
+    public class RecordViewModel : PageViewModelBase
     {
         VideoRecord _model;
         public RecordViewModel(VideoRecord model)
@@ -26,7 +26,7 @@ namespace XIVRecord.ViewModels
 
         public void Play()
         {
-            MessengerInstance.Send(NavigatePageMassage.Create("/Views/PlayRecordView.xaml"));
+            this.Navigate("/Views/PlayRecordView.xaml", new PlayRecordViewModel(null));
         }
 
         public bool CanPlay()
