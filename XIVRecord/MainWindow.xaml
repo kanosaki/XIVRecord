@@ -4,7 +4,8 @@
         xmlns:v="clr-namespace:XIVRecord.Views"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         Title="MainWindow" Height="350" Width="525"
-        Loaded="ModernWindow_Loaded">
+        Loaded="ModernWindow_Loaded"
+        ContentSource="/Views/MainView.xaml">
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="Archive">
             <mui:LinkGroup.Links>
@@ -12,7 +13,7 @@
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
     </mui:ModernWindow.MenuLinkGroups>
-    <Grid Style="{StaticResource ContentRoot}">
+    <mui:ModernFrame Style="{StaticResource ContentRoot}">
         <v:MainView DataContext="{Binding}"/>
-    </Grid>
+    </mui:ModernFrame>
 </mui:ModernWindow>

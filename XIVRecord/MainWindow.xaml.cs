@@ -1,8 +1,10 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using FirstFloor.ModernUI.Windows.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,7 +31,6 @@ namespace XIVRecord
 
         private void ModernWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.LinkNavigator.Navigate(new Uri("/Views/MainView.xaml", UriKind.Relative), this);
         }
     }
 }
