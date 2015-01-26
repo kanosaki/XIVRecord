@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GalaSoft.MvvmLight.Messaging;
 using XIVRecord.ViewModels;
+using XIVRecord.Views;
+using XIVRecord.Video;
 
 namespace XIVRecord
 {
@@ -36,6 +38,8 @@ namespace XIVRecord
 
         private void ModernWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            var vml = Views.ViewModelLoader.Default;
+            this.NavigatePage(new NavigatePageMassage(ViewKeys.ArchiveDirView, new ArchiveDirViewModel(ArchiveDir.TryReadFromRegistry())));
         }
 
         private void NavigatePage(NavigatePageMassage msg)
@@ -44,12 +48,11 @@ namespace XIVRecord
             {
                 Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    this.LinkNavigator.Navigate(msg.Uri, frame);
                     if (msg.DataContext != null)
                     {
-                        _viewModel.ContentContext = msg.DataContext;
+                        Views.ViewModelLoader.Default.Update(msg.Uri, msg.DataContext);
                     }
-                    //this.ContentSource = msg.Uri;
+                    this.LinkNavigator.Navigate(msg.Uri, frame);
                 }));
             }
             catch (Exception ex)

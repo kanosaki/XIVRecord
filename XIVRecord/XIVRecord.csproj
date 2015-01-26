@@ -101,6 +101,7 @@
     <Compile Include="Views\ArchiveDirView.xaml.cs">
       <DependentUpon>ArchiveDirView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Keys.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +112,7 @@
       <DependentUpon>RecordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RecordViewModel.cs" />
+    <Compile Include="Views\ViewModelLoader.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
