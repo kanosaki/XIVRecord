@@ -8,5 +8,10 @@ namespace XIVRecord.ActLog
 {
     public class BattleLog
     {
+        List<LogFile> _logCandidates;
+        public BattleLog(List<LogFile> logCandidates)
+        {
+            _logCandidates = logCandidates;
+        }
     }
 }

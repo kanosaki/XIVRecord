@@ -10,9 +10,28 @@ namespace XIVRecord.ActLog
     public class LogDir
     {
         public DirectoryInfo Dir { get; private set; }
+        public static readonly TimeSpan UpdateInterval = TimeSpan.FromMinutes(10);
+
+        List<LogFile> _files;
+        DateTime _lastChecked;
+
         public LogDir(DirectoryInfo dir)
         {
             this.Dir = dir;
+        }
+
+        private void RefreshFiles()
+        {
+            _files = this.Dir
+                .EnumerateFiles("Network_*.log")
+                .Select(fi => new LogFile(fi)).ToList();
+            _lastChecked = DateTime.Now;
+        }
+
+        private void CheckFiles()
+        {
+            if (_files == null || DateTime.Now - _lastChecked > UpdateInterval)
+                this.RefreshFiles();
         }
 
         /// <summary>
@@ -23,10 +42,8 @@ namespace XIVRecord.ActLog
         /// <returns></returns>
         public IEnumerable<LogFile> Find(DateRange range)
         {
-            return this.Dir
-                .EnumerateFiles("Network_*.log")
-                .Select(fi => new LogFile(fi))
-                .Where(log => log.TimeRange.Intersects(range));
+            this.CheckFiles();
+            return _files.Where(log => log.TimeRange.Intersects(range));
         }
     }
 }

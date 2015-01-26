@@ -21,10 +21,27 @@ namespace XIVRecord
                 throw new NullReferenceException("logDir");
             _videoDir = videoDir;
             _logDir = logDir;
-            this.Records = new List<BattleRecord>();
+            this.Records = this.CollectRecords();
         }
 
         public List<BattleRecord> Records { get; set; }
+
+        private List<BattleRecord> CollectRecords()
+        {
+            return _videoDir
+                .EnumerateRecords()
+                .Select(rec =>
+                {
+                    var logs = _logDir.Find(DateRange.Create(rec.Timestamp, TimeSpan.FromSeconds(0)));
+                    if (logs.Any())
+                        return new BattleRecord(new BattleLog(logs.ToList()), new BattleVideo(rec));
+                    else
+                        return null;
+
+                })
+                .Where(e => e != null)
+                .ToList();
+        }
 
         public IEnumerator<BattleRecord> GetEnumerator()
         {

@@ -19,6 +19,8 @@ namespace XIVRecord
         {
             this.Log = log;
             this.Video = video;
+            this.Caption = "FOOBAR";
+            this.Timestamp = this.Video.Timestamp;
         }
     }
 }
