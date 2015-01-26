@@ -9,7 +9,7 @@ namespace XIVRecord
 {
     public class Main
     {
-        public ArchiveDir Archive { get; private set; }
+        public VideoArchiveDir Archive { get; private set; }
         public string ArchivePath
         {
             get
@@ -20,13 +20,13 @@ namespace XIVRecord
             }
             set
             {
-                this.Archive = new ArchiveDir(new System.IO.DirectoryInfo(value));
+                this.Archive = new VideoArchiveDir(new System.IO.DirectoryInfo(value));
             }
         }
 
         public Main()
         {
-            this.Archive = ArchiveDir.TryReadFromRegistry();
+            this.Archive = VideoArchiveDir.TryReadFromRegistry();
             var logfiles = ActLog.Act.Default.FFXIVLogDir.Find(DateRange.Create(DateTime.Now, TimeSpan.FromDays(-1)));
             foreach (var log in logfiles)
             {

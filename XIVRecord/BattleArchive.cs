@@ -10,10 +10,10 @@ namespace XIVRecord
 {
     public class BattleArchive
     {
-        ArchiveDir _videoDir;
+        VideoArchiveDir _videoDir;
         LogDir _logDir;
 
-        public BattleArchive(ArchiveDir videoDir, LogDir logDir)
+        public BattleArchive(VideoArchiveDir videoDir, LogDir logDir)
         {
             if (videoDir == null)
                 throw new NullReferenceException("videoDir");
@@ -33,7 +33,7 @@ namespace XIVRecord
 
         public static BattleArchive LoadDefault()
         {
-            var videoDir = ArchiveDir.TryReadFromRegistry();
+            var videoDir = VideoArchiveDir.TryReadFromRegistry();
             var logDir = Act.Default.FFXIVLogDir;
             return new BattleArchive(videoDir, logDir);
         }

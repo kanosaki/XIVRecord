@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace XIVRecord.Video
 {
-    public class ArchiveDir
+    public class VideoArchiveDir
     {
         /// <summary>
         /// ShadowPlay stores record directory in this key with UTF-16
@@ -22,7 +22,7 @@ namespace XIVRecord.Video
 
         public DirectoryInfo Dir { get; private set; }
 
-        public ArchiveDir(DirectoryInfo dir)
+        public VideoArchiveDir(DirectoryInfo dir)
         {
             this.Dir = dir;
         }
@@ -39,7 +39,7 @@ namespace XIVRecord.Video
         /// If failed, returns null.
         /// </summary>
         /// <returns>ArchiveDir or null</returns>
-        public static ArchiveDir TryReadFromRegistry()
+        public static VideoArchiveDir TryReadFromRegistry()
         {
             try
             {
@@ -49,7 +49,7 @@ namespace XIVRecord.Video
                 var recdir = Encoding.Unicode.GetString(regValue.SubArray(0, regValue.Length - UNICODE_NULLCHAR_SIZE));
                 var path = Path.Combine(recdir, "Desktop");
                 var dir = new DirectoryInfo(path);
-                return new ArchiveDir(dir);
+                return new VideoArchiveDir(dir);
             }
             catch (NullReferenceException)
             {
