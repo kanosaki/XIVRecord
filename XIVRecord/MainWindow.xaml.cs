@@ -27,19 +27,22 @@ namespace XIVRecord
     /// </summary>
     public partial class MainWindow : ModernWindow
     {
-        MainWindowViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            _viewModel = new ViewModels.MainWindowViewModel();
-            this.DataContext = _viewModel;
             Messenger.Default.Register(this, (Action<NavigatePageMassage>)this.NavigatePage);
         }
 
         private void ModernWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var vml = Views.ViewModelLoader.Default;
-            this.NavigatePage(new NavigatePageMassage(ViewKeys.ArchiveDirView, new ArchiveDirViewModel(ArchiveDir.TryReadFromRegistry())));
+            Task.Run(() => {
+                var model = BattleArchive.LoadDefault();
+                var vm = new BattleArchiveViewModel(model);
+                var vml = Views.ViewModelLoader.Default;
+                Dispatcher.BeginInvoke((Action)(() => { 
+                    this.NavigatePage(new NavigatePageMassage(ViewKeys.ArchiveDirView, vm));
+                }));
+            });
         }
 
         private void NavigatePage(NavigatePageMassage msg)

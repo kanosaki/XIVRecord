@@ -9,12 +9,12 @@ using XIVRecord.Video;
 
 namespace XIVRecord.ViewModels
 {
-    public class ArchiveDirViewModel : ViewModelBase
+    public class BattleArchiveViewModel : ViewModelBase
     {
-        ArchiveDir _model;
+        BattleArchive _model;
         public ObservableCollection<RecordViewModel> Records { get; set; }
 
-        public ArchiveDirViewModel(ArchiveDir model)
+        public BattleArchiveViewModel(BattleArchive model)
         {
             _model = model;
             this.Refresh();
@@ -22,10 +22,8 @@ namespace XIVRecord.ViewModels
 
         public void Refresh()
         {
-            var records = _model
-                .EnumerateRecords()
-                .Select(rec => new RecordViewModel(rec));
-            this.Records = new ObservableCollection<RecordViewModel>(records); 
+            var vms = _model.Select(br => new RecordViewModel(br));
+            this.Records = new ObservableCollection<RecordViewModel>(vms); 
         }
     }
 }

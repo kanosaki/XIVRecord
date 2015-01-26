@@ -12,6 +12,8 @@ namespace XIVRecord
     {
         public BattleLog Log { get; protected set; }
         public BattleVideo Video { get; protected set; }
+        public string Caption { get; protected set; }
+        public DateTime Timestamp { get; protected set; }
 
         public BattleRecord(BattleLog log, BattleVideo video)
         {

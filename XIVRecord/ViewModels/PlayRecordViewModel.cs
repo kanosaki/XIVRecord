@@ -13,12 +13,11 @@ namespace XIVRecord.ViewModels
 
         public PlayRecordViewModel(BattleRecord model)
         {
-            this.Caption = "FOOBAR";
-            //if (model == null) 
-            //    throw new ArgumentNullException("model");
-            //_model = model;
+            if (model == null) 
+                throw new ArgumentNullException("model");
+            _model = model;
         }
 
-        public string Caption { get; set; }
+        public string Caption { get { return _model.Caption; } }
     }
 }

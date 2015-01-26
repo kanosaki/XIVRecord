@@ -87,6 +87,7 @@
     <Compile Include="ActLog\BattleLog.cs" />
     <Compile Include="ActLog\LogDir.cs" />
     <Compile Include="ActLog\LogFile.cs" />
+    <Compile Include="BattleArchive.cs" />
     <Compile Include="BattleRecord.cs" />
     <Compile Include="DateRange.cs" />
     <Compile Include="Extensions.cs" />
@@ -95,13 +96,12 @@
     <Compile Include="Video\BattleVideo.cs" />
     <Compile Include="Video\VideoRecord.cs" />
     <Compile Include="ViewModels\ArchiveDirViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PageViewModelBase.cs" />
     <Compile Include="ViewModels\PlayRecordViewModel.cs" />
     <Compile Include="Views\ArchiveDirView.xaml.cs">
       <DependentUpon>ArchiveDirView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Keys.cs" />
+    <Compile Include="ViewKeys.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>

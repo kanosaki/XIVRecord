@@ -12,8 +12,8 @@ namespace XIVRecord.ViewModels
 {
     public class RecordViewModel : PageViewModelBase
     {
-        VideoRecord _model;
-        public RecordViewModel(VideoRecord model)
+        BattleRecord _model;
+        public RecordViewModel(BattleRecord model)
         {
             _model = model;
             PlayCommand = new RelayCommand(this.Play, this.CanPlay);
@@ -21,12 +21,12 @@ namespace XIVRecord.ViewModels
 
         public DateTime Timestamp { get { return _model.Timestamp; } }
 
-        public string Caption { get { return _model.HeadFile.Name; } }
+        public string Caption { get { return _model.Caption; } }
 
 
         public void Play()
         {
-            this.Navigate("/Views/PlayRecordView.xaml", new PlayRecordViewModel(null));
+            this.Navigate(ViewKeys.PlayRecordView, new PlayRecordViewModel(_model));
         }
 
         public bool CanPlay()

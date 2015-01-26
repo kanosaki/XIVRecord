@@ -13,5 +13,10 @@ namespace XIVRecord.ViewModels
         {
             MessengerInstance.Send(NavigatePageMassage.Create(pageUri, datacontext));
         }
+
+        protected void Navigate(Uri pageUri, object datacontext)
+        {
+            MessengerInstance.Send(new NavigatePageMassage(pageUri, datacontext));
+        }
     }
 }

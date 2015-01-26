@@ -8,5 +8,6 @@ namespace XIVRecord.Video
 {
     public class BattleVideo
     {
+        public DateTime Timestamp { get; set; }
     }
 }
