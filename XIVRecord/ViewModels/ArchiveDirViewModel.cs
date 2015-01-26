@@ -22,7 +22,7 @@ namespace XIVRecord.ViewModels
 
         public void Refresh()
         {
-            var vms = _model.Select(br => new RecordViewModel(br));
+            var vms = _model.Records.Select(br => new RecordViewModel(br));
             this.Records = new ObservableCollection<RecordViewModel>(vms); 
         }
     }

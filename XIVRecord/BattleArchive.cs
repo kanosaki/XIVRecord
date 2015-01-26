@@ -21,9 +21,10 @@ namespace XIVRecord
                 throw new NullReferenceException("logDir");
             _videoDir = videoDir;
             _logDir = logDir;
+            this.Records = new List<BattleRecord>();
         }
 
-        public IEnumerable<BattleRecord> Records { get; set; }
+        public List<BattleRecord> Records { get; set; }
 
         public IEnumerator<BattleRecord> GetEnumerator()
         {
@@ -35,11 +36,6 @@ namespace XIVRecord
             var videoDir = ArchiveDir.TryReadFromRegistry();
             var logDir = Act.Default.FFXIVLogDir;
             return new BattleArchive(videoDir, logDir);
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return this.Records.ToList().GetEnumerator();
         }
     }
 }
