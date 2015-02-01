@@ -39,9 +39,7 @@ namespace XIVRecord
                 var model = BattleArchive.LoadDefault();
                 var vm = new BattleArchiveViewModel(model);
                 var vml = Views.ViewModelLoader.Default;
-                Dispatcher.BeginInvoke((Action)(() => { 
-                    this.NavigatePage(new NavigatePageMassage(ViewKeys.ArchiveDirView, vm));
-                }));
+                this.NavigatePage(new NavigatePageMassage(ViewKeys.ArchiveDirView, vm));
             });
         }
 
@@ -55,7 +53,7 @@ namespace XIVRecord
                     {
                         Views.ViewModelLoader.Default.Update(msg.Uri, msg.DataContext);
                     }
-                    this.LinkNavigator.Navigate(msg.Uri, frame);
+                    this.ContentSource = msg.Uri;
                 }));
             }
             catch (Exception ex)

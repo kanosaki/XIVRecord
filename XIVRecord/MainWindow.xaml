@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:XIVRecord.Views"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="600" Width="800"
         ContentSource="/Views/ArchiveDirView.xaml"
         Loaded="ModernWindow_Loaded">
     <mui:ModernWindow.MenuLinkGroups>
